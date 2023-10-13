@@ -1,32 +1,39 @@
 {
     "payload": [
         {
-            "bearing": 326.8,
+            "bearing": 229.5,
             "crowdLevel": "high",
-            "lat": 1.345725,
-            "lng": 103.690592,
-            "vehiclePlate": "PD807D"
+            "lat": 1.354558,
+            "lng": 103.683728,
+            "vehiclePlate": "PD621Y"
         },
         {
-            "bearing": 49.8,
+            "bearing": 276.8,
             "crowdLevel": "low",
-            "lat": 1.346225,
-            "lng": 103.689696,
-            "vehiclePlate": "PD698B"
+            "lat": 1.347169,
+            "lng": 103.6786,
+            "vehiclePlate": "PD933Y"
         },
         {
-            "bearing": 27.5,
+            "bearing": 54.6,
             "crowdLevel": "high",
-            "lat": 1.356536,
-            "lng": 103.68752,
-            "vehiclePlate": "PD771Y"
+            "lat": 1.340488,
+            "lng": 103.682928,
+            "vehiclePlate": "PD742G"
         },
         {
-            "bearing": 159.4,
+            "bearing": 46.6,
             "crowdLevel": "low",
-            "lat": 1.338066,
-            "lng": 103.695944,
-            "vehiclePlate": "PD1064Z"
+            "lat": 1.343594,
+            "lng": 103.686752,
+            "vehiclePlate": "PD524U"
+        },
+        {
+            "bearing": 273.1,
+            "crowdLevel": "low",
+            "lat": 1.355947,
+            "lng": 103.68668,
+            "vehiclePlate": "PD583Z"
         }
     ],
     "status": 1000000

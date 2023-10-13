@@ -30,16 +30,17 @@ func (service *RunningBusService) EstimatedArrivalTime(ctx context.Context, busS
 		return nil, nil
 	}
 
+	busStopInfo := getBusStopInfo(busLinesBusStops, busStopID)
+	if busStopInfo == nil {
+		return nil, fmt.Errorf("cannot find bus stop with ID: %s", busStopID)
+	}
+
 	// find bus line pass bus stop, return if no bus line existed
 	busLines := findBusLineByBusStopID(busLinesBusStops, busStopID)
 	if busLines == nil {
 		return nil, nil
 	}
 
-	busStopInfo := getBusStopInfo(busLinesBusStops, busStopID)
-	if busStopInfo == nil {
-		return nil, fmt.Errorf("cannot find bus stop with ID: %s", busStopID)
-	}
 	incomingBus := []aggregate.IncomingBus{}
 	for _, busLine := range busLines {
 		resp, err := service.UWaveClient.GetRunningBusByBusLineID(ctx, busLine.ID)
@@ -159,7 +160,7 @@ func findCurrentPath(busLine entity.BusLine, position location.Location) []int {
 	case pathPositionNearest == 0:
 		return []int{0, 1}
 	case pathPositionNearest == len(busLine.BusLinePaths)-1:
-		return []int{len(busLine.BusLinePaths) - 2, len(busLine.BusLinePaths) - 1}
+		return []int{pathPositionNearest - 1, pathPositionNearest}
 	case pathPositionNearest > 0 && pathPositionNearest < len(busLine.BusLinePaths)-1:
 		prePosition := busLine.BusLinePaths[pathPositionNearest-1]
 		nearestPosition := busLine.BusLinePaths[pathPositionNearest]
