@@ -1,0 +1,45 @@
+version: '3'
+networks:
+    internal_network:
+      driver: bridge
+      
+services:
+    # db:
+    #     image: postgres
+    #     restart: always
+    #     ports:
+    #         - "5432:5432"
+    #     environment:
+    #         POSTGRES_USER: postgres
+    #         POSTGRES_PASSWORD: 123456
+    #         POSTGRES_DB: "bank"
+    #     networks:
+    #         - internal_network
+    bus-timing:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        networks:
+            - internal_network
+        # environment:
+        #     DB_HOST: db
+        #     DB_PORT: 5432
+        #     DB_SSL_MODE: disable
+        #     DB_USERNAME: postgres
+        #     DB_NAME: bank
+        #     DB_PASSWORD: 123456
+
+        working_dir: /go/src/bus-timing
+        command: |
+            sh -c 'go run main.go'
+        expose:
+            - "8080"
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./:/go/src/bus-timing
+        # depends_on:
+        #     - db
+# volumes:
+#   bank_db:
+#     driver: local
