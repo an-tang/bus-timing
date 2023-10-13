@@ -21,7 +21,6 @@ RUN apk add git; \
     apk add build-base; \
     apk add --no-cache tzdata;
 
-# COPY ./database/migrations/ /database/migrations/
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./configuration /go/configuration
 COPY --from=build /go/bin/$APP /go/bin/$APP
